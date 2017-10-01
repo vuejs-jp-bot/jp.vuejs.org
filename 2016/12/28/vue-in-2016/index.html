@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>2016年の Vue — Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/2016/12/28/vue-in-2016/">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/2016/12/28/vue-in-2016/">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="2016年の Vue — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://vuejs.org//images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="2016年の Vue — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = ""</script>
+
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46852172-1', 'vuejs.org');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link">学ぶ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/v2/guide/" class="nav-link">ガイド</a></li>
+      <li><a href="/v2/api/" class="nav-link">API</a></li>
+      <li><a href="/v2/examples/" class="nav-link">例</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">エコシステム</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">ロードマップ</a></li>
+    <li><h4>ヘルプ</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org" class="nav-link" target="_blank">フォーラム</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">チャット(公式)</a></li>
+      <li><a href="https://vuejs-jp-slackin.herokuapp.com" class="nav-link" target="_blank">チャット(日本向け)</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">テンプレート</a></li>
+    </ul></li>
+    <li><h4>ニュース</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">ブログ(英語)</a></li>
+      <li><a href="/blog/" class="nav-link" target="_blank">ブログ(日本語訳)</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">ジョブ(海外)</a></li>
+    </ul></li>
+    <li><h4>コアプラグイン</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>リソースリスト</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">公式レポジトリ</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="/v2/guide/team.html" class="nav-link team">チーム</a>
+</li>
+<li>
+  <a href="/contribution/" class="nav-link">貢献</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a class="nav-link">Vue を支援する</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">ショップ</a></li>
+      <li><a href="https://opencollective.com/vuejs" target="_blank" class="nav-link">OpenCollective で支援する</a></li>
+      <li><a href="https://www.patreon.com/evanyou" target="_blank" class="nav-link">Patreon で Evan を支援する</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">言語</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://ru.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Français</a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          <div class="sidebar blog">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link">学ぶ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/v2/guide/" class="nav-link">ガイド</a></li>
+      <li><a href="/v2/api/" class="nav-link">API</a></li>
+      <li><a href="/v2/examples/" class="nav-link">例</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">エコシステム</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">ロードマップ</a></li>
+    <li><h4>ヘルプ</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org" class="nav-link" target="_blank">フォーラム</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">チャット(公式)</a></li>
+      <li><a href="https://vuejs-jp-slackin.herokuapp.com" class="nav-link" target="_blank">チャット(日本向け)</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">テンプレート</a></li>
+    </ul></li>
+    <li><h4>ニュース</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">ブログ(英語)</a></li>
+      <li><a href="/blog/" class="nav-link" target="_blank">ブログ(日本語訳)</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">ジョブ(海外)</a></li>
+    </ul></li>
+    <li><h4>コアプラグイン</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>リソースリスト</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">公式レポジトリ</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="/v2/guide/team.html" class="nav-link team">チーム</a>
+</li>
+<li>
+  <a href="/contribution/" class="nav-link">貢献</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a class="nav-link">Vue を支援する</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">ショップ</a></li>
+      <li><a href="https://opencollective.com/vuejs" target="_blank" class="nav-link">OpenCollective で支援する</a></li>
+      <li><a href="https://www.patreon.com/evanyou" target="_blank" class="nav-link">Patreon で Evan を支援する</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">言語</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://ru.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/2016/12/28/vue-in-2016/" class="nav-link" target="_blank">Français</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+      <h2>
+        Recent Posts
+        <a href="/atom.xml" target="_blank" style="vertical-align: middle; margin-left: 5px;">
+          <img src="/images/feed.png" style="width: 15px; height: 15px;">
+        </a>
+      </h2>
+      <ul style="padding: 0;">
+      
+        <li>
+          <a href="/2017/09/23/upcoming-typeScript-changes-in-vue-2.5/" class="sidebar-link">やって来る Vue 2.5 での TypeScript の変更</a>
+        </li>
+      
+        <li>
+          <a href="/2017/09/12/vue-is-now-on-opencollective/" class="sidebar-link">Vue は OpenCollective を始めました !</a>
+        </li>
+      
+        <li>
+          <a href="/2016/12/28/vue-in-2016/" class="sidebar-link current">2016年の Vue</a>
+        </li>
+      
+        <li>
+          <a href="/2016/11/03/retiring-vue-resource/" class="sidebar-link">vue-resource の引退について</a>
+        </li>
+      
+        <li>
+          <a href="/2016/10/01/here-2.0/" class="sidebar-link">Vue.js 2.0 が来ました！</a>
+        </li>
+      
+        <li>
+          <a href="/2016/04/27/announcing-2.0/" class="sidebar-link">Vue.js 2.0 の発表</a>
+        </li>
+      
+        <li>
+          <a href="/2016/03/14/march-update/" class="sidebar-link">2016年3月最新情報</a>
+        </li>
+      
+        <li>
+          <a href="/2016/02/06/common-gotchas/" class="sidebar-link">よくある初心者の落とし穴</a>
+        </li>
+      
+        <li>
+          <a href="/2015/12/28/vue-cli/" class="sidebar-link">vue-cli を発表</a>
+        </li>
+      
+        <li>
+          <a href="/2015/10/28/why-no-template-url/" class="sidebar-link">Vue.js が templateURL をサポートしない理由</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="content with-sidebar blog post">
+  <div id="ad">
+  <script>
+    (function () {
+      var s = document.createElement('script')
+      s.setAttribute('async', '')
+      s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
+      s.id = '_carbonads_js'
+      document.getElementById('ad').appendChild(s)
+    })()
+  </script>
+</div>
+
+  <h1>2016年の Vue</h1>
+  <h4>Dec 28, 2016</h4>
+  <p>このブログは<a href="https://medium.com/the-vue-point/vue-in-2016-8df71d98bfb3#.76ezxb9bg" target="_blank" rel="external">こちら</a>の翻訳ブログです。</p>
+<p><img src="https://cdn-images-1.medium.com/max/1600/1*ZJD3llCWveVH9-uUcCjMCw.png" alt="Google Trends for &quot;vuejs + vue.js&quot;"></p>
+<figcaption style="font-size:14px;text-align:center;">… 2015年は爆発的な年だと思っていたら！</figcaption>
+
+<p>2016年ももうすぐ終わりです！　過去12か月間、<a href="https://vuejs.org/">Vue</a> の成長は一貫して私の期待を上回っています。プロジェクトは比較的ニッチなフレームワークから現場の最大のプレイヤーとしばしば比較されるようになるまでに成長しました。何が起こったのか見てみましょう！</p>
+<h2 id="2016年の統計概要"><a href="#2016年の統計概要" class="headerlink" title="2016年の統計概要"></a>2016年の統計概要</h2><ul>
+<li>NPM ダウンロード数: 合計 1,943,567、過去1年間 1,531,217 (2015年の 382,184 から +300 %増)</li>
+<li>コアリポジトリ GitHub stars 数: 合計 37,664、過去1年間 〜 26,000 (2015年の～ 7,600 から +240 %増)</li>
+<li>コアリポジトリプルリクエストマージ数: 合計 350 件、過去1年間 258 件 (2015年の 70 件から +268 ％増)</li>
+<li>vuejs.org ページビュー: 過去1年間 21,424,759 (2015年の 3,761,728 から +470 %増)</li>
+<li>vuejs.org 月間アクティブユーザー数: 358,405 (2015年の 77,836 から +360 %増）※ユーザーセッションの42％は中国からです。</li>
+<li>Chrome DevTools extension 週間アクティブユーザー: 84,098 (前年度の統計無)</li>
+</ul>
+<blockquote>
+<p>トリビア: Vue は現在 GitHub で 10 番目に star が付けられた JavaScript プロジェクトで、 <a href="https://docs.google.com/spreadsheets/d/11bGpZq6ixlhrmQnzEUqbgbwTQwQVdtvILjp32vaOKBc/edit#gid=1735042899" target="_blank" rel="external">2016 年では全プロジェクトの中で3位</a>です (ソースコード以外のプロジェクトを除くと1位)。</p>
+</blockquote>
+<h2 id="それはただの誇大広告ですか？"><a href="#それはただの誇大広告ですか？" class="headerlink" title="それはただの誇大広告ですか？"></a>それはただの誇大広告ですか？</h2><p>決してそんなつもりはありません。Vue は今や3年近く使われており、そして過去2年間で成長曲線はかなり安定しています。私たちは幸せな生産現場のユーザーから多くの肯定的なフィードバックを受けており、また今年はユーザーが Vue の肯定的な経験について詳述した少なくとも2つの Hacker News フロントページの記事がありました。<span style="background-color: transparent !important; background-image: linear-gradient(to bottom, rgba(219, 249, 229, 1), rgba(219, 249, 229, 1));">つまり、Vue は”今すぐ切り替えるべき次の光り輝くもの”ではなく、そうなるつもりもありません。その設計目標は UI 開発のパラダイムに革命を起こすことではなく、むしろより多くの人々が web を構築できるようにすることです。</span>Vue は他の多くの優れたフレームワークからインスピレーションを受けていますが、これらのアイデアを親しみやすく進歩的な方法で組み合わせて公開することでより多くの開発者が利益を得ることができます。なので、単にそれがトレンドだからという理由で切り替える義務を感じることはありません。ですが、あなたがより幸せな開発者になれるかどうかを試してみてください！</p>
+<h2 id="独立"><a href="#独立" class="headerlink" title="独立"></a>独立</h2><p>3月上旬、私は Vue をフルタイムで独立して働くことに決め、<a href="https://www.patreon.com/evanyou" target="_blank" rel="external">パトロンキャンペーン</a>を開始しました。それは、これまでのところ(驚くべきことに)かなり成功しています。マネージャーに報告することなく独立して働くのは初めてのことで、それは非常に解放的な経験でした。良いところは、仕事はもはや仕事のように感じられないことです。私がやるべきことが自分の本当にやりたいことで、加えて、私はいつどのように働くかを完全にコントロールしているので、自分自身に仕事を強いる必要はないからです。一方、それはまた悪いところもあります。特に新米の親(私には今年は赤ちゃんがいました！)な間は、生活と仕事のバランスを管理することは非常に困難です。このことは私が対処することを学んでいるもので、うまくいけば来年にはもっと良くなるでしょう。しかし全体として、私は以前よりももっと意欲があって充実していると感じており、私はそれら全てを可能としているパトロンの後援者とスポンサー全員に感謝の意を表します。</p>
+<h2 id="2-0-のローンチ"><a href="#2-0-のローンチ" class="headerlink" title="2.0 のローンチ"></a>2.0 のローンチ</h2><p>2.0 に関する作業は大きな仕事でした。私は長い間それについて考えていましたが、フルタイムへの切り替えのおかげで始められました。完全に異なるコンパイル/レンダリング戦略を利用するために、プロジェクト全体がスクラッチから書き直されました。しかし同時に、以前のバージョンと同じ開発エクスペリエンスと、ほぼ同様の API を維持する必要がありました。これはまた、新しいコアで動かすために vue-router、vuex、およびビルドツールチェーンの周囲のエコシステムをアップグレードし、加えてすべてのドキュメントを更新する必要があることを意味していました。私が予想していたよりもはるかに多くの仕事が判明しました：私は Vue 2.0 の最初のプロトタイプを4月上旬に開始し、<a href="https://jp.vuejs.org/2016/10/01/here-2.0/" target="_blank" rel="external">公式のローンチ</a>は約6か月後の9月30日でした。新しいリリースでは、新機能とクロス環境の性能により、Vue がより早く、より速く、より強力になりました。振り返って、私たちがやったことを本当に誇りに思います。</p>
+<h2 id="個人プロジェクトを超えて"><a href="#個人プロジェクトを超えて" class="headerlink" title="個人プロジェクトを超えて"></a>個人プロジェクトを超えて</h2><p>Vue 関連のプロジェクトの範囲が拡大するにつれて、私はコミュニティから多くの素晴らしい貢献者が参加するという幸運にも恵まれました。今日、多くの<a href="https://github.com/orgs/vuejs/people" target="_blank" rel="external">コアチーム</a>メンバーがサーバーサイドレンダリングからドキュメンテーション(vuejs.org)、vue-router、vuex、そして公式の TypeScript 統合などのサブプロジェクトに至るまで、プロジェクトのあらゆる側面に積極的に貢献しています。彼らのオープンソースの仕事への熱意と献身に私はいつも恐縮しています。</p>
+<p>もちろん、設計の議論に参加し、新しい機能を提案し、問題を検討し、バグ修正を提出したことについて、他のコミュニティ貢献者にも同じ感謝が寄せられます。今年はコアリポジトリだけで 258 件のプルリクエストが寄せられ、そのうちかなりの数がコードベースを大幅に改善しています。日々 Vue のエコシステムをより良くしているのは、関係するすべての人々のコンビネーションです。このプロジェクトは皆さんの貢献なしでは今の立ち位置には居なかったでしょう！</p>
+<h2 id="将来を見据えて"><a href="#将来を見据えて" class="headerlink" title="将来を見据えて"></a>将来を見据えて</h2><p>Vue についてはまだ改善の余地があります。 2017年のリストには次のようなものがあります:</p>
+<h3 id="テストストーリーの改善"><a href="#テストストーリーの改善" class="headerlink" title="テストストーリーの改善"></a>テストストーリーの改善</h3><p>Twitter のフィードバックに基づくと、多くのユーザーが Vue コンポーネントとアプリケーションのテストに関して十分な情報が無いと感じています。これは改善に集中することを確実にするエリアです。Vue コンポーネントのテストを容易にする公式のテストユーティリティを提供することによって、ドキュメントのより多くのガイダンスを提供することができます。</p>
+<h3 id="開発エクスペリエンスのブラッシュアップ"><a href="#開発エクスペリエンスのブラッシュアップ" class="headerlink" title="開発エクスペリエンスのブラッシュアップ"></a>開発エクスペリエンスのブラッシュアップ</h3><p>開発中のヒントや警告の改善、サーバサイドレンダリング (SSR) のスタックトレースの改善、DevTools のパフォーマンスプロファイリング、SSR の使用や PWA (Progressive Web Apps) の構築を容易にする CLI テンプレートの開発など、スタック全体の開発経験をさらに磨きたいです。</p>
+<h3 id="より良いエコシステムの見つけやすさ"><a href="#より良いエコシステムの見つけやすさ" class="headerlink" title="より良いエコシステムの見つけやすさ"></a>より良いエコシステムの見つけやすさ</h3><p>Vue のエコシステムは急速に成長していますが、その結果 <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="external">awesome-vue</a> が肥大化し、ナビゲートや評価が非常に困難になっています。コアチームはこれについて懸命に考えており、ユーザーが高品質のコミュニティプロジェクトを特定するのを支援するプロジェクトに取り組んでいます。それはより高い基準で管理され、含まれる各プロジェクトについてより詳細な情報を提供します。</p>
+<h3 id="ネイティブレンダリング"><a href="#ネイティブレンダリング" class="headerlink" title="ネイティブレンダリング"></a>ネイティブレンダリング</h3><p>Alibaba の <a href="http://weex-project.io/" target="_blank" rel="external">Weex プロジェクト</a>との協力関係は、かなりの進歩を遂げました。最初の大きな目標は Vue 2 を Weex のネイティブレンダリングエンジンの上にある実際の JavaScript ランタイムフレームワークにすること、これは最新の0.9.4リリースで完了しました。2017年にはコミュニティからのフィードバックや Alibaba の大規模なプロダクションに基づいて改良された文書や、より良いオンボード体験、そして API の改善が行われます。</p>
+<h3 id="新しい-Web-プラットフォーム機能"><a href="#新しい-Web-プラットフォーム機能" class="headerlink" title="新しい Web プラットフォーム機能"></a>新しい Web プラットフォーム機能</h3><p>新しい標準が登場し実装されるにつれて、私たちは Vue を大幅に改善する可能性のあるものに注目しています。たとえば、 <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Proxy" target="_blank" rel="external">ES2015 Proxy</a> を活用して Vue のリアクティブシステムの現在の制限のいくつかを排除することが可能です。また、Vue コンポーネントをコンパイルしてネイティブなカスタムエレメント (Custom Elements) として配布する可能性も検討しています。現時点では、最大の障害はブラウザの互換性です。サポートされているすべてのブラウザで一貫した動作を保証するため、サポート率が大幅に向上するまでこれらの機能の優先順位を決めることはまずありません。しかし私たちはこれらの新しい標準を認識しており、すでに実験を行っていることを確信しています。その時が来れば、Vue はこれらの新しいプラットフォーム機能を活用するために迅速に進化するでしょう。</p>
+<h3 id="閑話休題-私たちは2017年にカンファレンスを開催します！"><a href="#閑話休題-私たちは2017年にカンファレンスを開催します！" class="headerlink" title="閑話休題: 私たちは2017年にカンファレンスを開催します！"></a>閑話休題: 私たちは2017年にカンファレンスを開催します！</h3><p>それはまだ初期の計画段階ですが、<a href="http://conf.vuejs.org/" target="_blank" rel="external">サイトを訪問</a>してそれを素晴らしいイベントにするのに役立つ<a href="https://docs.google.com/forms/d/e/1FAIpQLSfiRF9JIpvAcWL7EsnpODIhf_JiNX3PETA_S3XnqmtuG2foQA/viewform" target="_blank" rel="external">調査を受けてください</a>。さらに、あなたの知識と経験を仲間の Vue ユーザーと分かち合うために<a href="https://docs.google.com/forms/d/e/1FAIpQLSdtbxBpV0j_zCnELXQuIkeGH8x6gaOWE0J8tTsAdpa0O5MYOw/viewform" target="_blank" rel="external">話をしてください</a>！</p>
+<p>もしあなたが Vue に興味があるなら、 <a href="https://vuejs.org">公式サイト</a>をチェックアウトして開始し、そして <a href="https://twitter.com/vuejs" target="_blank" rel="external">Twitter で私たちをフォロー</a>してください！</p>
+
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      // search index defaults to v2
+      var match = window.location.pathname.match(/^\/(v\d+)/)
+      var version = match ? match[1] : 'v2'
+      docsearch({
+      appId: 'BH4D9OD16A',
+      apiKey: '0a75952972806d9ad07e387d08e9cc4c',
+      indexName: 'vuejs_jp',
+      inputSelector: selector,
+      algoliaOptions: { facetFilters: ["version:" + version] }
+      })
+    })
+    </script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>

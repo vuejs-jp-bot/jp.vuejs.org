@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>コンポーネント — Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link rel="alternate" hreflang="x-default" href="https://vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="zh" href="https://cn.vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/guide/components.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/guide/components.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="コンポーネント — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://vuejs.org//images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="コンポーネント — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.png" type="image/png">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "guide"</script>
+
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46852172-1', 'vuejs.org');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>Vue.js</span>
+  </a>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">学ぶ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/v2/guide/" class="nav-link current">ガイド</a></li>
+      <li><a href="/v2/api/" class="nav-link">API</a></li>
+      <li><a href="/v2/examples/" class="nav-link">例</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">エコシステム</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">ロードマップ</a></li>
+    <li><h4>ヘルプ</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org" class="nav-link" target="_blank">フォーラム</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">チャット(公式)</a></li>
+      <li><a href="https://vuejs-jp-slackin.herokuapp.com" class="nav-link" target="_blank">チャット(日本向け)</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">テンプレート</a></li>
+    </ul></li>
+    <li><h4>ニュース</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">ブログ(英語)</a></li>
+      <li><a href="/blog/" class="nav-link" target="_blank">ブログ(日本語訳)</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">ジョブ(海外)</a></li>
+    </ul></li>
+    <li><h4>コアプラグイン</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>リソースリスト</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">公式レポジトリ</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="/v2/guide/team.html" class="nav-link team">チーム</a>
+</li>
+<li>
+  <a href="/contribution/" class="nav-link">貢献</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a class="nav-link">Vue を支援する</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">ショップ</a></li>
+      <li><a href="https://opencollective.com/vuejs" target="_blank" class="nav-link">OpenCollective で支援する</a></li>
+      <li><a href="https://www.patreon.com/evanyou" target="_blank" class="nav-link">Patreon で Evan を支援する</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">言語</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Français</a></li>
+  </ul>
+</li>
+
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li class="nav-dropdown-container learn">
+  <a class="nav-link current">学ぶ</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="/v2/guide/" class="nav-link current">ガイド</a></li>
+      <li><a href="/v2/api/" class="nav-link">API</a></li>
+      <li><a href="/v2/examples/" class="nav-link">例</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">エコシステム</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/vuejs/roadmap" class="nav-link" target="_blank">ロードマップ</a></li>
+    <li><h4>ヘルプ</h4></li>
+    <li><ul>
+      <li><a href="https://forum.vuejs.org" class="nav-link" target="_blank">フォーラム</a></li>
+      <li><a href="https://chat.vuejs.org/" class="nav-link" target="_blank">チャット(公式)</a></li>
+      <li><a href="https://vuejs-jp-slackin.herokuapp.com" class="nav-link" target="_blank">チャット(日本向け)</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">テンプレート</a></li>
+    </ul></li>
+    <li><h4>ニュース</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">ブログ(英語)</a></li>
+      <li><a href="/blog/" class="nav-link" target="_blank">ブログ(日本語訳)</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">ジョブ(海外)</a></li>
+    </ul></li>
+    <li><h4>コアプラグイン</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+      <li><a href="https://ssr.vuejs.org/" class="nav-link" target="_blank">Vue Server Renderer</a></li>
+    </ul></li>
+    <li><h4>リソースリスト</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">公式レポジトリ</a></li>
+      <li><a href="https://curated.vuejs.org/" class="nav-link" target="_blank">Vue Curated</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Awesome Vue</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li>
+  <a href="/v2/guide/team.html" class="nav-link team">チーム</a>
+</li>
+<li>
+  <a href="/contribution/" class="nav-link">貢献</a>
+</li>
+<li class="nav-dropdown-container support-vue">
+  <a class="nav-link">Vue を支援する</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><ul>
+      <li><a href="https://vue.threadless.com" target="_blank" class="nav-link">ショップ</a></li>
+      <li><a href="https://opencollective.com/vuejs" target="_blank" class="nav-link">OpenCollective で支援する</a></li>
+      <li><a href="https://www.patreon.com/evanyou" target="_blank" class="nav-link">Patreon で Evan を支援する</a></li>
+    </ul></li>
+  </ul>
+</li>
+
+<li class="nav-dropdown-container language">
+  <a class="nav-link">言語</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">English</a></li>
+    <li><a href="https://cn.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://ru.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Русский</a></li>
+    <li><a href="https://kr.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">한국어</a></li>
+    <li><a href="https://br.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Português</a></li>
+    <li><a href="https://fr.vuejs.org/v2/guide/components.html" class="nav-link" target="_blank">Français</a></li>
+  </ul>
+</li>
+
+
+    </ul>
+    <div class="list">
+      <div class="main-sponsor">
+        <span>プラチナスポンサー</span><br>
+        <a href="https://stdlib.com" target="_blank" class="logo">
+          <img src="/images/stdlib.png">
+        </a>
+      </div>
+      <a class="become-backer" href="/support-vuejs">
+        スポンサーになる
+      </a>
+      <h2>
+        
+          ガイド
+        
+        
+          <select class="version-select">
+            <option value="SELF" selected>2.x</option>
+            <option value="v1">1.0</option>
+            <option value="012">0.12</option>
+          </select>
+        
+      </h2>
+      <ul class="menu-root">
+  
+    
+    
+      
+        <li><h3>基本的な使い方</h3></li>
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/installation.html" class="sidebar-link">インストール</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/index.html" class="sidebar-link">はじめに</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/instance.html" class="sidebar-link">Vue インスタンス</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/syntax.html" class="sidebar-link">テンプレート構文</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/computed.html" class="sidebar-link">算出プロパティとウォッチャ</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/class-and-style.html" class="sidebar-link">クラスとスタイルのバインディング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/conditional.html" class="sidebar-link">条件付きレンダリング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/list.html" class="sidebar-link">リストレンダリング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/events.html" class="sidebar-link">イベントハンドリング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/forms.html" class="sidebar-link">フォーム入力バインディング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/components.html" class="sidebar-link current">コンポーネント</a>
+    </li>
+  
+    
+    
+      
+      
+        <li><h3>トランジションとアニメーション</h3></li>
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/transitions.html" class="sidebar-link">Enter/Leave とトランジション一覧</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/transitioning-state.html" class="sidebar-link">状態のトランジション</a>
+    </li>
+  
+    
+    
+      
+      
+      
+        <li><h3>再利用と構成</h3></li>
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/mixins.html" class="sidebar-link">ミックスイン</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/custom-directive.html" class="sidebar-link">カスタムディレクティブ</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/render-function.html" class="sidebar-link">描画関数とJSX</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/plugins.html" class="sidebar-link">プラグイン</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/filters.html" class="sidebar-link">フィルター</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+        <li><h3>ツール</h3></li>
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/deployment.html" class="sidebar-link">プロダクション環境への配信</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/single-file-components.html" class="sidebar-link">単一ファイルコンポーネント</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/unit-testing.html" class="sidebar-link">単体テスト</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/typescript.html" class="sidebar-link">TypeScript のサポート</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+        <li><h3>スケールアップ</h3></li>
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/routing.html" class="sidebar-link">ルーティング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/state-management.html" class="sidebar-link">状態管理</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/ssr.html" class="sidebar-link">サーバサイドレンダリング</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+        <li><h3>内部</h3></li>
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/reactivity.html" class="sidebar-link">リアクティブの探求</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>移行</h3></li>
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/migration.html" class="sidebar-link">Vue 1.x からの移行</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/migration-vue-router.html" class="sidebar-link">Vue Router 0.7.x からの移行</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/migration-vuex.html" class="sidebar-link">Vuex 0.6.x から 1.0 への移行</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><h3>その他</h3></li>
+      
+    
+    
+    <li>
+      <a href="/v2/guide/comparison.html" class="sidebar-link">他のフレームワークとの比較</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/join.html" class="sidebar-link">Vue.js コミュニティへ参加しましょう!</a>
+    </li>
+  
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    <li>
+      <a href="/v2/guide/team.html" class="sidebar-link">チームに会おう</a>
+    </li>
+  
+  
+</ul>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="content guide with-sidebar components-guide">
+  
+    
+      <div id="ad">
+  <script>
+    (function () {
+      var s = document.createElement('script')
+      s.setAttribute('async', '')
+      s.src = '//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=vuejs'
+      s.id = '_carbonads_js'
+      document.getElementById('ad').appendChild(s)
+    })()
+  </script>
+</div>
+
+    
+  
+  
+    <h1>コンポーネント</h1>
+  
+  <p class="updated">最終更新日: 2017年9月23日</p>
+  
+  <h2 id="コンポーネントとは何ですか？"><a href="#コンポーネントとは何ですか？" class="headerlink" title="コンポーネントとは何ですか？"></a>コンポーネントとは何ですか？</h2><p>コンポーネントは Vue.js の最も強力な機能の 1 つです。基本的な HTML 要素を拡張して再利用可能なコードのカプセル化を助けます。高いレベルでは、コンポーネントは Vue.js のコンパイラが指定された振舞いを加えるカスタム要素です。場合によっては、特別な <code>is</code> 属性で拡張されたネイティブな HTML 要素の姿をとることもあります。</p>
+<h2 id="コンポーネントの使用"><a href="#コンポーネントの使用" class="headerlink" title="コンポーネントの使用"></a>コンポーネントの使用</h2><h3 id="登録"><a href="#登録" class="headerlink" title="登録"></a>登録</h3><p>以前のセクションで、以下のように Vue インスタンスを作成できることを学習しました:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#some-element'</span>,</div><div class="line">  <span class="comment">// オプション</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>グローバルなコンポーネントを登録するためには、 <code>Vue.component(tagName, options)</code> を使うことができます。例:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</div><div class="line">  <span class="comment">// オプション</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p class="tip">カスタムタグの名前について <a href="https://www.w3.org/TR/custom-elements/#concepts" target="_blank" rel="external">W3C ルール</a> (全て小文字で、ハイフンが含まれている必要がある)にしたがうことは良い取り組みと考えられますが、 Vue はそれを強制しないことを覚えておいてください。</p>
+
+<p>一度登録すると、コンポーネントはカスタム要素 <code>&lt;my-component&gt;</code> として親のインスタンスのテンプレートで使用できます。コンポーネントが root の Vue インスタンスをインスタンス化する<strong>前</strong>に登録されているか確認してください。ここに完全な例を示します:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">my-component</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 登録する</span></div><div class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</div><div class="line">  template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">// root インスタンスを作成する</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>描画される内容は以下になります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>A custom component!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+
+<div id="example" class="demo">
+  <my-component></my-component>
+</div>
+<script>
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+new Vue({ el: '#example' })
+</script>
+
+<h3 id="ローカル登録"><a href="#ローカル登録" class="headerlink" title="ローカル登録"></a>ローカル登録</h3><p>グローバルに全てのコンポーネントを登録する必要はありません。別のコンポーネントのインスタンスオプションの <code>components</code> に登録することで、そのコンポーネントのスコープ内でのみ利用可能なコンポーネントを作成できます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> Child = &#123;</div><div class="line">  template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  components: &#123;</div><div class="line">    <span class="comment">// &lt;my-component&gt; は親テンプレートでのみ有効になります</span></div><div class="line">    <span class="string">'my-component'</span>: Child</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同じカプセル化は、ディレクティブのようなアセットタイプに対して適用されます。</p>
+<h3 id="DOM-テンプレート解析の注意事項"><a href="#DOM-テンプレート解析の注意事項" class="headerlink" title="DOM テンプレート解析の注意事項"></a>DOM テンプレート解析の注意事項</h3><p>DOM をテンプレートとして使うとき(例、ある要素をすでに存在する要素にマウントするために <code>el</code> オプションを使うとき)、あなたは HTML がどのように動くかに内在する幾つかの制約の影響を受けます。なぜなら、 Vue はブラウザがテンプレートを解析して正規化した <strong>後</strong> にのみテンプレートの内容を検索することができるからです。特に、 <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;select&gt;</code> のようないくつかの要素は、その要素の内部にどの要素を表示させることができるかの制約を持ち、 <code>&lt;option&gt;</code> のようないくつかの要素は、ある特定の要素の内部でのみ表示されます。</p>
+<p>このことは、いくつかの制約をもつ要素と共にカスタムコンポーネントを使うときに問題に繋がるかもしれません。例:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">my-row</span>&gt;</span>...<span class="tag">&lt;/<span class="name">my-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>カスタムコンポーネントの <code>&lt;my-row&gt;</code> は無効なコンテンツとして巻き上げられます。それゆえ、後に描画されたアウトプットの中でエラーを引き起こします。回避策は <code>is</code> という特殊な属性を使うことです:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">is</span>=<span class="string">"my-row"</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>注目すべきは、もしあなたが以下のソースのどれかから文字列テンプレートを使う場合には、これらの制約は適用されないということです。</strong></p>
+<ul>
+<li><code>&lt;script type=&quot;text/x-template&quot;&gt;</code></li>
+<li>JavaScript のインラインテンプレート文字列</li>
+<li><code>.vue</code> コンポーネント</li>
+</ul>
+<p>そのため、可能なときはいつでも文字列テンプレートの使用が好まれます。</p>
+<h3 id="data-は関数でなければならない"><a href="#data-は関数でなければならない" class="headerlink" title="data は関数でなければならない"></a><code>data</code> は関数でなければならない</h3><p>Vue コンストラクタに渡すことのできるほとんどのオプションは、コンポーネントの中で使用できます。しかし、1 つだけ特別なケースがあります: <code>data</code> は関数でなければいけません。実際、以下を試すと:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</div><div class="line">  template: <span class="string">'&lt;span&gt;&#123;&#123; message &#125;&#125;&lt;/span&gt;'</span>,</div><div class="line">  data: &#123;</div><div class="line">    message: <span class="string">'hello'</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>その後 Vue の処理は止まり、コンポーネントインスタンスでは <code>data</code> は関数でなければならないと伝える警告をコンソールに出力します。しかしながら、どうしてそのルールが存在するかを理解するのはいいことでしょうから、ちょっとズルをしてみましょう。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example-2"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">simple-counter</span>&gt;</span><span class="tag">&lt;/<span class="name">simple-counter</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">simple-counter</span>&gt;</span><span class="tag">&lt;/<span class="name">simple-counter</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">simple-counter</span>&gt;</span><span class="tag">&lt;/<span class="name">simple-counter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; <span class="attr">counter</span>: <span class="number">0</span> &#125;</div><div class="line"></div><div class="line">Vue.component(<span class="string">'simple-counter'</span>, &#123;</div><div class="line">  template: <span class="string">'&lt;button v-on:click="counter += 1"&gt;&#123;&#123; counter &#125;&#125;&lt;/button&gt;'</span>,</div><div class="line">  <span class="comment">// data は技術的には関数なので、Vue は警告を出しません。</span></div><div class="line">  <span class="comment">// しかし、各コンポーネントのインスタンスは</span></div><div class="line">  <span class="comment">// 同じオブジェクトの参照を返します。</span></div><div class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> data</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example-2'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="example-2" class="demo">
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+</div>
+<script>
+var data = { counter: 0 }
+Vue.component('simple-counter', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+  data: function () {
+    return data
+  }
+})
+new Vue({
+  el: '#example-2'
+})
+</script>
+
+<p>3 つのコンポーネントはすべて同じ <code>data</code> オブジェクトを共有しているので、ひとつのカウンタをインクリメントするとすべてのカウンタをインクリメントします！代わりに未使用の <code>data</code> オブジェクトを返すことにより、これを修正しましょう:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    counter: <span class="number">0</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>これで、すべてのカウンタはそれぞれカウンタ自身の内部状態を持ちます:</p>
+
+<div id="example-2-5" class="demo">
+  <my-component></my-component>
+  <my-component></my-component>
+  <my-component></my-component>
+</div>
+<script>
+Vue.component('my-component', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+  data: function () {
+    return {
+      counter: 0
+    }
+  }
+})
+new Vue({
+  el: '#example-2-5'
+})
+</script>
+
+<h3 id="コンポーネントの構成"><a href="#コンポーネントの構成" class="headerlink" title="コンポーネントの構成"></a>コンポーネントの構成</h3><p>コンポーネントは、一緒に使われることを意図されています。もっとも一般的なのは、親子関係です: コンポーネント A は自分自身のテンプレートとして、コンポーネント B を使用します。それらは必ずお互いに通信する必要があります。親は子にデータを伝える必要があるかもしれませんし、子は子で何が起こったかを、親に伝える必要があるかもしれません。しかし、はっきりと定義されたインタフェースを経由して、親と子を可能な限り分離されたものとしておくこともまた、とても大切です。これにより、各々のコンポーネントのコードは比較的独立した状態で書かれ判断されることが保証されます。それゆえ、コンポーネントを、よりメンテナンス可能で潜在的に再利用可能にできます。</p>
+<p>Vue では、親子のコンポーネントの関係は、<strong>props down, events up</strong> というように要約することができます。親は、 <strong>プロパティ</strong>を経由して、データを子に伝え、子は<strong>イベント</strong>を経由して、親にメッセージを送ります。以下でどのように動くか見てみましょう。</p>
+<p style="text-align: center;"><br>  <img style="width: 300px;" src="/images/props-events.png" alt="props down, events up"><br></p>
+
+<h2 id="プロパティ"><a href="#プロパティ" class="headerlink" title="プロパティ"></a>プロパティ</h2><h3 id="プロパティによるデータの伝達"><a href="#プロパティによるデータの伝達" class="headerlink" title="プロパティによるデータの伝達"></a>プロパティによるデータの伝達</h3><p>全てのコンポーネントインスタンスは、各自の<strong>隔離されたスコープ (isolated scope)</strong> を持ちます。つまり、子コンポーネントのテンプレートで親データを直接参照できない(そしてすべきでない)ということです。データは<strong>プロパティ</strong>を使用して子コンポーネントに伝達できます。</p>
+<p>プロパティは親コンポーネントからの情報を伝えるためのカスタム属性です。子コンポーネントは、<a href="../api/#props"><code>props</code> オプション</a>を利用して、伝達を想定するプロパティを明示的に宣言する必要があります:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'child'</span>, &#123;</div><div class="line">  <span class="comment">// プロパティを宣言します。</span></div><div class="line">  props: [<span class="string">'message'</span>],</div><div class="line">  <span class="comment">// 単なるデータのように、プロパティは内部テンプレートで使用することができ、</span></div><div class="line">  <span class="comment">// そして this.messageとして、vm の中で利用可能になります。</span></div><div class="line">  template: <span class="string">'&lt;span&gt;&#123;&#123; message &#125;&#125;&lt;/span&gt;'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>すると以下のようにプレーン文字列を渡すことができます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">message</span>=<span class="string">"hello!"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>結果:</p>
+
+<div id="prop-example-1" class="demo">
+  <child message="hello!"></child>
+</div>
+<script>
+new Vue({
+  el: '#prop-example-1',
+  components: {
+    child: {
+      props: ['message'],
+      template: '<span>{{ message }}</span>'
+    }
+  }
+})
+</script>
+
+<h3 id="キャメルケース-vs-ケバブケース"><a href="#キャメルケース-vs-ケバブケース" class="headerlink" title="キャメルケース vs ケバブケース"></a>キャメルケース vs ケバブケース</h3><p>HTML の属性は大文字と小文字を区別しません。そのため、非文字列テンプレートを使用する場合、キャメルケースのプロパティ名を属性として使用するときは、それらをケバブケース (kebab-case: ハイフンで句切られた) にする必要があります:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'child'</span>, &#123;</div><div class="line">  <span class="comment">// JavaScript ではキャメルケース</span></div><div class="line">  props: [<span class="string">'myMessage'</span>],</div><div class="line">  template: <span class="string">'&lt;span&gt;&#123;&#123; myMessage &#125;&#125;&lt;/span&gt;'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTML ではケバブケース --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">my-message</span>=<span class="string">"hello!"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>繰り返しになりますが、もし文字列テンプレートを使用する場合は、この制限は適用されません。</p>
+<h3 id="動的なプロパティ"><a href="#動的なプロパティ" class="headerlink" title="動的なプロパティ"></a>動的なプロパティ</h3><p>式に通常の属性をバインディングするのと同様に、 <code>v-bind</code> を使用して親のデータにプロパティを動的にバインディングすることもできます。親でデータが更新される度に、そのデータが子に流れ落ちます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"parentMsg"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">child</span> <span class="attr">v-bind:my-message</span>=<span class="string">"parentMsg"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>v-bind</code> のための省略記法を使用するとよりシンプルです:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">child</span> <span class="attr">:my-message</span>=<span class="string">"parentMsg"</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>結果:</p>
+
+<div id="demo-2" class="demo">
+  <input v-model="parentMsg">
+  <br>
+  <child v-bind:my-message="parentMsg"></child>
+</div>
+<script>
+new Vue({
+  el: '#demo-2',
+  data: {
+    parentMsg: 'Message from parent'
+  },
+  components: {
+    child: {
+      props: ['myMessage'],
+      template: '<span>{{myMessage}}</span>'
+    }
+  }
+})
+</script>
+
+<p>もしオブジェクト内のすべてのプロパティを props として渡したい場合、 <code>v-bind</code> を引数なしで使う（<code>v-bind:プロパティ名</code> の代わりに <code>v-bind</code>）ことができます。例えば、 <code>todo</code> オブジェクトを与えるには:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">todo: &#123;</div><div class="line">  text: <span class="string">'Learn Vue'</span>,</div><div class="line">  isComplete: <span class="literal">false</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>そして:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">todo-item</span> <span class="attr">v-bind</span>=<span class="string">"todo"</span>&gt;</span><span class="tag">&lt;/<span class="name">todo-item</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>これは以下と等価です:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">todo-item</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:text</span>=<span class="string">"todo.text"</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:is-complete</span>=<span class="string">"todo.isComplete"</span></span></div><div class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">todo-item</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="リテラル-vs-動的"><a href="#リテラル-vs-動的" class="headerlink" title="リテラル vs 動的"></a>リテラル vs 動的</h3><p>初心者にありがちな誤りは、リテラル構文を使用して数を渡そうとすることです:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- これは純粋な文字列"1"を渡します --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>しかしながら、これはリテラルなプロパティなので、その値は実際に数の代わりに純粋な文字列 <code>&quot;1&quot;</code>が渡されています。実際に JavaScript の数を渡したい場合は、その値が JavaScript の式として評価されるよう、<code>v-bind</code> を使う必要があります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- これは実際の数を渡します --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">v-bind:some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="単方向データフロー"><a href="#単方向データフロー" class="headerlink" title="単方向データフロー"></a>単方向データフロー</h3><p>すべてのプロパティは、子プロパティと親プロパティの間の<strong>単方向 (one-way-down)</strong> バインディングを形成します: 親プロパティが更新したとき、それは子プロパティに伝わり、その反対はありません。これは、あなたのアプリケーションのデータフローの説明を難しくしてしまうような、子コンポーネントが偶然親の状態を変化させることを防ぎます。</p>
+<p>それに加えて、親コンポーネントが更新されるたびに、子コンポーネント内のすべてのプロパティが最新の値に再読込されます。これは、子コンポーネント内部のプロパティを変更しようとするべきでないことを意味しています。もし変更しようとすると、 Vue はコンソール内で警告します。</p>
+<p>プロパティを変更したくなる 2 つのケースがあります。</p>
+<ol>
+<li><p>プロパティは初期値を渡すためにのみ使われ、子コンポーネントは単にその値をローカルデータプロパティとして使用したい場合</p>
+</li>
+<li><p>プロパティは変換が必要な生の値として渡されます。</p>
+</li>
+</ol>
+<p>これらのユースケースの適切な答えは:</p>
+<ol>
+<li><p>プロパティの初期値をその初期値とするようなローカルデータプロパティを定義します。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">props: [<span class="string">'initialCounter'</span>],</div><div class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123; <span class="attr">counter</span>: <span class="keyword">this</span>.initialCounter &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>プロパティの値から計算される算出プロパティ (computed property) を定義します。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">props: [<span class="string">'size'</span>],</div><div class="line">computed: &#123;</div><div class="line">  normalizedSize: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.size.trim().toLowerCase()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p class="tip"> JavaScript のオブジェクトや配列は参照渡しのため、もしプロパティが配列やオブジェクトなら、子内部のオブジェクトまたは配列自身の変更は、親の状態に影響を<strong>与えます</strong>。</p>
+
+<h3 id="プロパティ検証"><a href="#プロパティ検証" class="headerlink" title="プロパティ検証"></a>プロパティ検証</h3><p>コンポーネントは受け取るプロパティに対する必要条件を指定することができます。もし必要条件が満たされていない場合は、 Vue は警告を出します。これは、特に他人が使用する可能性のあるコンポーネントを作るときに便利です。</p>
+<p>文字列の配列としてプロパティを定義する代わりに、検証要件を含んだオブジェクトハッシュフォーマットを使用できます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'example'</span>, &#123;</div><div class="line">  props: &#123;</div><div class="line">    <span class="comment">// 基本な型チェック (`null` はどんな型でも受け付ける)</span></div><div class="line">    propA: <span class="built_in">Number</span>,</div><div class="line">    <span class="comment">// 複数の受け入れ可能な型</span></div><div class="line">    propB: [<span class="built_in">String</span>, <span class="built_in">Number</span>],</div><div class="line">    <span class="comment">// 必須な文字列</span></div><div class="line">    propC: &#123;</div><div class="line">      type: <span class="built_in">String</span>,</div><div class="line">      required: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// デフォルト値</span></div><div class="line">    propD: &#123;</div><div class="line">      type: <span class="built_in">Number</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="number">100</span></div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// オブジェクトと配列のデフォルトはファクトリ関数から返すようにしています</span></div><div class="line">    propE: &#123;</div><div class="line">      type: <span class="built_in">Object</span>,</div><div class="line">      <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123; <span class="attr">message</span>: <span class="string">'hello'</span> &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// カスタムバリデータ関数</span></div><div class="line">    propF: &#123;</div><div class="line">      validator: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> value &gt; <span class="number">10</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><code>type</code> は次のネイティブなコンストラクタのいずれかになります:</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Boolean</li>
+<li>Function</li>
+<li>Object</li>
+<li>Array</li>
+<li>Symbol</li>
+</ul>
+<p>加えて、<code>type</code> はカスタムコンストラクタ関数とすることもでき、アサーションは <code>instanceof</code> チェックで作成できるでしょう。</p>
+<p>プロパティ検証が失敗すると、Vue は(開発ビルドを使用している場合)コンソールへの警告を提示します。コンポーネントインスタンスが作成される <strong>前</strong> にプロパティが検証されるため、<code>default</code> や <code>validator</code> 関数内では、<code>data</code>、 <code>computed</code>、 <code>methods</code> などのインスタンスプロパティは利用できないことに注意してください。</p>
+<h2 id="プロパティではない属性"><a href="#プロパティではない属性" class="headerlink" title="プロパティではない属性"></a>プロパティではない属性</h2><p>プロパティではない属性は、コンポーネントに渡される属性ですが、対応するプロパティは定義されていません。</p>
+<p>子コンポーネントに情報を渡すために明示的に定義されたプロパティが好まれる一方で、コンポーネントライブラリの作成者は、そのコンポーネントが使用される可能性のあるコンテキストを常に予期することはできません。そのため、コンポーネントはコンポーネントのルート要素に追加される任意の属性を受け入れることができます。</p>
+<p>例えば、<code>input</code> 上の <code>data-3d-date-picker</code> 属性を必要とする Bootstrap プラグインでサードパーティの <code>bs-date-input</code> コンポーネントを使用しているとします。この属性をコンポーネントインスタンスに追加することができます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bs-date-input</span> <span class="attr">data-3d-date-picker</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">bs-date-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>そして、<code>data-3d-date-picker=&quot;true&quot;</code> 属性は自動的に <code>bs-date-input</code> のルート要素に追加されます。</p>
+<h3 id="既存属性による置換-マージ"><a href="#既存属性による置換-マージ" class="headerlink" title="既存属性による置換/マージ"></a>既存属性による置換/マージ</h3><p>これが <code>bs-date-input</code> のテンプレートとしましょう:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">class</span>=<span class="string">"form-control"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>date picker プラグインのテーマを指定するには、次のような特定のクラスを追加する必要があります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bs-date-input</span></span></div><div class="line"><span class="tag">  <span class="attr">data-3d-date-picker</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"date-picker-theme-dark"</span></span></div><div class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">bs-date-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>このケースでは、 <code>class</code> の 2 つの異なる値が定義されます:</p>
+<ul>
+<li>テンプレート内のコンポーネントによって設定される <code>form-control</code></li>
+<li>親によってコンポーネントに渡される <code>date-picker-theme-dark</code></li>
+</ul>
+<p>ほとんどの属性では、コンポーネントに設定されている値が、コンポーネントに提供された値に置き換えられます。例えば、<code>type=&quot;large&quot;</code> を渡すと、<code>type=&quot;date&quot;</code> が置換され、恐らく壊れるでしょう！幸いにも、<code>class</code> と <code>style</code> 属性は少し賢いので、両方の値がマージされ最終的な値は <code>form-control date-picker-theme-dark</code>です:</p>
+<h2 id="カスタムイベント"><a href="#カスタムイベント" class="headerlink" title="カスタムイベント"></a>カスタムイベント</h2><p>親が子にプロパティを使用してデータを伝達できることを学んできました。しかし、何かが起こったとき、どのように親へ通信するのでしょうか？そこで Vue のカスタムイベントの出番です。</p>
+<h3 id="カスタムイベントとの-v-on-の使用"><a href="#カスタムイベントとの-v-on-の使用" class="headerlink" title="カスタムイベントとの v-on の使用"></a>カスタムイベントとの <code>v-on</code> の使用</h3><p>すべての Vue インスタンスは <a href="../api/#インスタンスメソッド-イベント">イベントインターフェイス</a> を実装しています。これは以下をできることを意味します:</p>
+<ul>
+<li><code>$on(eventName)</code>を使用してイベントを購読します。</li>
+<li><code>$emit(eventName)</code>を使用して自身にイベントをトリガーします。</li>
+</ul>
+<p class="tip">Vue のカスタムイベントはブラウザの <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget" target="_blank" rel="external">EventTarget API</a> とは別ものであることに注意してください。同等に動作しますが、<code>$on</code> と <code>$emit</code> は <code>addEventListener</code> と <code>dispatchEvent</code> に対するエイリアスでは<strong>ありません</strong>。</p>
+
+<p>それに加えて、親コンポーネントは、子コンポーネントが使われているテンプレート内で直接 <code>v-on</code> を使用することで、子コンポーネントからのイベントを購読することができます。</p>
+<p class="tip">子で発行されたイベントを購読するために <code>$on</code> を使用することはできません。以下の例のように、テンプレートでは直接 <code>v-on</code> を使用しなければなりません。</p>
+
+<p>以下が例です:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"counter-event-example"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; total &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button-counter</span> <span class="attr">v-on:increment</span>=<span class="string">"incrementTotal"</span>&gt;</span><span class="tag">&lt;/<span class="name">button-counter</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button-counter</span> <span class="attr">v-on:increment</span>=<span class="string">"incrementTotal"</span>&gt;</span><span class="tag">&lt;/<span class="name">button-counter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'button-counter'</span>, &#123;</div><div class="line">  template: <span class="string">'&lt;button v-on:click="incrementCounter"&gt;&#123;&#123; counter &#125;&#125;&lt;/button&gt;'</span>,</div><div class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      counter: <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    incrementCounter: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.counter += <span class="number">1</span></div><div class="line">      <span class="keyword">this</span>.$emit(<span class="string">'increment'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#counter-event-example'</span>,</div><div class="line">  data: &#123;</div><div class="line">    total: <span class="number">0</span></div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    incrementTotal: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.total += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="counter-event-example" class="demo">
+  <p>{{ total }}</p>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+  <button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+<script>
+Vue.component('button-counter', {
+  template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+  data: function () {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    incrementCounter: function () {
+      this.counter += 1
+      this.$emit('increment')
+    }
+  }
+})
+new Vue({
+  el: '#counter-event-example',
+  data: {
+    total: 0
+  },
+  methods: {
+    incrementTotal: function () {
+      this.total += 1
+    }
+  }
+})
+</script>
+
+<p>この例では、子コンポーネントはその外で起こったこととはまだ完全に分離しているということに注目することが大切です。子コンポーネントが唯一行っていることは、親コンポーネントが監視している場合に備えて、自分自身の活動に関する情報を報告することです。</p>
+<h3 id="ネイティブイベントとコンポーネントのバインディング"><a href="#ネイティブイベントとコンポーネントのバインディング" class="headerlink" title="ネイティブイベントとコンポーネントのバインディング"></a>ネイティブイベントとコンポーネントのバインディング</h3><p>コンポーネントの root 要素でのネイティブイベントを購読したいときがあるかもしれません。このような場合、<code>v-on</code> に <code>.native</code> 修飾子を使用することができます。例:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">v-on:click.native</span>=<span class="string">"doTheThing"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="sync-修飾子"><a href="#sync-修飾子" class="headerlink" title=".sync 修飾子"></a><code>.sync</code> 修飾子</h3><blockquote>
+<p>2.3.0 から</p>
+</blockquote>
+<p>あるケースにおいては、プロパティに対して “双方向バインディング” が必要になるかもしれません。実際 Vue 1.x では、これは <code>.sync</code> 修飾子を提供したことで正にそうでした。子コンポーネントが <code>.sync</code> を持つプロパティを変更すると、値の変更は親に反映されます。これは便利ですが、単一方向のデータフローを破るため、長期的においてメンテナンスの問題につながります。子プロパティを変更するコードは暗黙的に親の状態に影響を及ぼします。</p>
+<p>これが、2.0 がリリースされたときに <code>.sync</code> 修飾子を削除した理由です。しかしながら、特に再利用可能なコンポーネントをリリースする場合には、それが実際に有用な場合があることが分かりました。私たちは、<strong>親の状態に、より一貫性と明示性の影響を与える子のコードを作成する</strong>変更が必要です。</p>
+<p>2.3 では、プロパティに対する <code>.sync</code> 修飾子を再導入しましたが、今回はさらに <code>v-on</code> リスナーに自動的に展開される、まさしく糖衣構文です:</p>
+<p>以下は</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">:foo.sync</span>=<span class="string">"bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>以下に展開されます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">:foo</span>=<span class="string">"bar"</span> @<span class="attr">update:foo</span>=<span class="string">"val =&gt; bar = val"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>子コンポーネントが <code>foo</code> の値を更新するためには、プロパティの変更の代わりに明示的にイベントを送出する必要があります:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.$emit(<span class="string">'update:foo'</span>, newValue)</div></pre></td></tr></table></figure>
+<h3 id="カスタムイベントを使用したフォーム入力コンポーネント"><a href="#カスタムイベントを使用したフォーム入力コンポーネント" class="headerlink" title="カスタムイベントを使用したフォーム入力コンポーネント"></a>カスタムイベントを使用したフォーム入力コンポーネント</h3><p>カスタムイベントは、<code>v-model</code>とともに動く、カスタムフォーム入力を作成するためにも使用されます。以下を思い出しましょう:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"something"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>は、以下の糖衣構文です:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span></span></div><div class="line"><span class="tag">  <span class="attr">v-bind:value</span>=<span class="string">"something"</span></span></div><div class="line"><span class="tag">  <span class="attr">v-on:input</span>=<span class="string">"something = $event.target.value"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>コンポーネントと共に使用されるとき、代わりにこのように簡単にできます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">custom-input</span></span></div><div class="line"><span class="tag">  <span class="attr">:value</span>=<span class="string">"something"</span></span></div><div class="line"><span class="tag">  @<span class="attr">input</span>=<span class="string">"value =&gt; &#123; something = value &#125;"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">custom-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>そのため、コンポーネントを <code>v-model</code> と共に動かすためには、以下が必要です (これらは 2.2.0 以降で設定することができます):</p>
+<ul>
+<li><code>value</code> プロパティを受け入れる</li>
+<li>新しい値と共に <code>input</code> イベントを送出する</li>
+</ul>
+<p>とても簡単な通貨入力で、実行して見てみましょう:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">currency-input</span> <span class="attr">v-model</span>=<span class="string">"price"</span>&gt;</span><span class="tag">&lt;/<span class="name">currency-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'currency-input'</span>, &#123;</div><div class="line">  template: <span class="string">'\</span></div><div class="line"><span class="string">    &lt;span&gt;\</span></div><div class="line"><span class="string">      $\</span></div><div class="line"><span class="string">      &lt;input\</span></div><div class="line"><span class="string">        ref="input"\</span></div><div class="line"><span class="string">        v-bind:value="value"\</span></div><div class="line"><span class="string">        v-on:input="updateValue($event.target.value)"&gt;\</span></div><div class="line"><span class="string">    &lt;/span&gt;\</span></div><div class="line"><span class="string">  '</span>,</div><div class="line">  props: [<span class="string">'value'</span>],</div><div class="line">  methods: &#123;</div><div class="line">    <span class="comment">// 値を直接的に更新する代わりに、このメソッドを使用して input の</span></div><div class="line">    <span class="comment">// 値の整形と値に対する制約が行われる</span></div><div class="line">    updateValue: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> formattedValue = value</div><div class="line">        <span class="comment">// 両端のスペースを削除</span></div><div class="line">        .trim()</div><div class="line">        <span class="comment">// 小数点2桁以下まで短縮</span></div><div class="line">        .slice(</div><div class="line">          <span class="number">0</span>,</div><div class="line">          value.indexOf(<span class="string">'.'</span>) === <span class="number">-1</span></div><div class="line">            ? value.length</div><div class="line">            : value.indexOf(<span class="string">'.'</span>) + <span class="number">3</span></div><div class="line">        )</div><div class="line">      <span class="comment">// 値が既に正規化されていないならば、</span></div><div class="line">      <span class="comment">// 手動で適合するように上書き</span></div><div class="line">      <span class="keyword">if</span> (formattedValue !== value) &#123;</div><div class="line">        <span class="keyword">this</span>.$refs.input.value = formattedValue</div><div class="line">      &#125;</div><div class="line">      <span class="comment">// input イベントを通して数値を発行する</span></div><div class="line">      <span class="keyword">this</span>.$emit(<span class="string">'input'</span>, <span class="built_in">Number</span>(formattedValue))</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+<div id="currency-input-example" class="demo">
+  <currency-input v-model="price"></currency-input>
+</div>
+<script>
+Vue.component('currency-input', {
+  template: '\
+    <span>\
+      $\
+      <input\
+        ref="input"\
+        v-bind:value="value"\
+        v-on:input="updateValue($event.target.value)"\
+      >\
+    </span>\
+  ',
+  props: ['value'],
+  methods: {
+    updateValue: function (value) {
+      var formattedValue = value
+        .trim()
+        .slice(
+          0,
+          value.indexOf('.') === -1
+            ? value.length
+            : value.indexOf('.') + 3
+        )
+      if (formattedValue !== value) {
+        this.$refs.input.value = formattedValue
+      }
+      this.$emit('input', Number(formattedValue))
+    }
+  }
+})
+new Vue({
+  el: '#currency-input-example',
+  data: { price: '' }
+})
+</script>
+
+<p>上記の実装は、かなり素朴です。例えば、複数のピリオドや文字を入力することができます。うわっ！そこで、自明でない例を見たい人は、より堅固な通貨フィルタが以下にあります:</p>
+<iframe width="100%" height="300" src="https://jsfiddle.net/chrisvfritz/1oqjojjx/embedded/result,html,js" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3 id="コンポーネントの-v-model-のカスタマイズ"><a href="#コンポーネントの-v-model-のカスタマイズ" class="headerlink" title="コンポーネントの v-model のカスタマイズ"></a>コンポーネントの <code>v-model</code> のカスタマイズ</h3><blockquote>
+<p>2.2.0 から新規</p>
+</blockquote>
+<p>デフォルトでは、コンポーネントにおける <code>v-model</code> は、 <code>value</code> をプロパティとして、 <code>input</code> をイベントとして用います。しかし、チェックボックスやラジオボタンなどの入力タイプを利用する場合は、 <code>value</code> プロパティをその他の目的で利用することができます。その際、 <code>model</code> オプションを利用することで、値の競合を避けることが可能です:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'my-checkbox'</span>, &#123;</div><div class="line">  model: &#123;</div><div class="line">    prop: <span class="string">'checked'</span>,</div><div class="line">    event: <span class="string">'change'</span></div><div class="line">  &#125;,</div><div class="line">  props: &#123;</div><div class="line">    checked: <span class="built_in">Boolean</span>,</div><div class="line">    <span class="comment">// これによって、 `value` プロパティを別の目的で利用することを許可します。</span></div><div class="line">    value: <span class="built_in">String</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-checkbox</span> <span class="attr">v-model</span>=<span class="string">"foo"</span> <span class="attr">value</span>=<span class="string">"some value"</span>&gt;</span><span class="tag">&lt;/<span class="name">my-checkbox</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上記は以下と同じです:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-checkbox</span></span></div><div class="line"><span class="tag">  <span class="attr">:checked</span>=<span class="string">"foo"</span></span></div><div class="line"><span class="tag">  @<span class="attr">change</span>=<span class="string">"val =&gt; &#123; foo = val &#125;"</span></span></div><div class="line"><span class="tag">  <span class="attr">value</span>=<span class="string">"some value"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">my-checkbox</span>&gt;</span></div></pre></td></tr></table></figure>
+<p class="tip"><code>checked</code> プロパティを明示的に宣言しなければならないことに注意してください。</p>
+
+<h3 id="親子間以外の通信"><a href="#親子間以外の通信" class="headerlink" title="親子間以外の通信"></a>親子間以外の通信</h3><p>ときどき、互いに親子関係ではない2つのコンポーネントが互いに通信する必要があるかもしれません。簡単なシナリオとして、空の Vue インスタンスを中心のイベントバスとして使用することができます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> bus = <span class="keyword">new</span> Vue()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// コンポーネント A のメソッドの中で</span></div><div class="line">bus.$emit(<span class="string">'id-selected'</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// コンポーネント B の created フックで</span></div><div class="line">bus.$on(<span class="string">'id-selected'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>より複雑なケースでは、専用の <a href="state-management.html">状態管理パターン</a> 採用することを考えるべきです。</p>
+<h2 id="スロットによるコンテンツ配信"><a href="#スロットによるコンテンツ配信" class="headerlink" title="スロットによるコンテンツ配信"></a>スロットによるコンテンツ配信</h2><p>複数のコンポーネントを使用するとき、しばしばそれらをこのように構成したくなります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">app</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-header</span>&gt;</span><span class="tag">&lt;/<span class="name">app-header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-footer</span>&gt;</span><span class="tag">&lt;/<span class="name">app-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">app</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>ここに言及すべきことが 2 つあります:</p>
+<ol>
+<li><p><code>&lt;app&gt;</code> コンポーネントはどのコンテンツを受け取るのか分かりません。そのコンポーネントが <code>&lt;app&gt;</code> を使用することによって決定されます。</p>
+</li>
+<li><p><code>&lt;app&gt;</code> コンポーネントはほぼ必ず独自のテンプレートを持っています。</p>
+</li>
+</ol>
+<p>コンポーネントの構造を動作させるためには、親の”コンテンツ”とそのコンポーネント自身のテンプレートを織り交ぜる方法が必要です。これは”コンテンツ配信”(または、Angular に精通している場合は “transclusion”)と呼ばれるプロセスです。Vue.js はオリジナルコンテンツに対する配信アウトレットとして機能する特別な <code>&lt;slot&gt;</code> 要素を使用して、現行の <a href="https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md" target="_blank" rel="external">Web Components spec draft</a> にならったコンテンツ配信 API を実装します。</p>
+<h3 id="コンパイルスコープ"><a href="#コンパイルスコープ" class="headerlink" title="コンパイルスコープ"></a>コンパイルスコープ</h3><p>API を掘り下げる前に、はじめにコンテンツがコンパイルされているスコープを明確にしましょう。このようなテンプレートを考えてみてください:<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">child-component</span>&gt;</span></div><div class="line">  &#123;&#123; message &#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>message</code> は親のデータと子のデータのどちらに束縛されるべきでしょうか？答えは親です。コンポーネントスコープに対するシンプルな経験則:</p>
+<blockquote>
+<p>親テンプレート内の全てのものは親のスコープでコンパイルされ、子テンプレート内の全てものは子のスコープでコンパイルされる</p>
+</blockquote>
+<p>よくある間違いは、親テンプレート内の子のプロパティ/メソッドにディレクティブを束縛しようとすることです:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 動作しません --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">child-component</span> <span class="attr">v-show</span>=<span class="string">"someChildProperty"</span>&gt;</span><span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>someChildProperty</code> は子コンポーネントのプロパティと仮定すると、上記の例は動作しないでしょう。親のテンプレートは子コンポーネントの状態について認識していません。</p>
+<p>コンポーネントで子スコープのディレクティブに束縛する必要がある場合、子コンポーネント自身のテンプレートにおいてそうすべきです:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'child-component'</span>, &#123;</div><div class="line">  <span class="comment">// 正しいスコープであるため、これは動作します</span></div><div class="line">  template: <span class="string">'&lt;div v-show="someChildProperty"&gt;Child&lt;/div&gt;'</span>,</div><div class="line">  data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      someChildProperty: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同様に、配信コンテンツは親スコープでコンパイルされます。</p>
+<h3 id="単一スロット"><a href="#単一スロット" class="headerlink" title="単一スロット"></a>単一スロット</h3><p>親コンテンツは子コンポーネントのテンプレートが少なくとも 1 つの <code>&lt;slot&gt;</code> アウトレットを含んでいない限り<strong>破棄されます</strong>。属性なしのスロットが 1 つだけあるときは、全コンテンツはスロットそのものを置き換え、DOM 内のその位置に挿入されます。</p>
+<p><code>&lt;slot&gt;</code> タグ内に元々あった全てのものは、<strong>フォールバックコンテンツ</strong>と見なされます。フォールバックコンテンツは子スコープでコンパイルされ、ホストしている要素が空で挿入されるコンテンツがない場合にのみ、表示されます。</p>
+<p><code>my-component</code> と呼ばれる以下のテンプレートによるコンポーネントがあるとします。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>I'm the child title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">slot</span>&gt;</span></div><div class="line">    This will only be displayed if there is no content</div><div class="line">    to be distributed.</div><div class="line">  <span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>コンポーネントを使用した親は以下になります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>I'm the parent title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">my-component</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some original content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some more original content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>描画された結果は以下になります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>I'm the parent title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>I'm the child title<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some original content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is some more original content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="名前付きスロット"><a href="#名前付きスロット" class="headerlink" title="名前付きスロット"></a>名前付きスロット</h3><p><code>&lt;slot&gt;</code> 要素は特別な属性 <code>name</code> を持ち、コンテンツを配信する方法をカスタマイズするために使用できます。異なる名前で複数のスロットを持つことができます。名前付きスロットは、コンテンツ内の対応する <code>slot</code> 属性を持つ任意の要素にマッチします。</p>
+<p>マッチしなかったコンテンツのためのキャッチオールアウトレットの機能を持つ<strong>デフォルトスロット</strong>として、名前無しのスロットを残すことができます。デフォルトスロットがない場合は、マッチしなかったコンテンツは破棄されます。</p>
+<p>例として、以下のテンプレートのような、<code>app-layout</code> コンポーネントがあると仮定します:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"footer"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>親のマークアップは以下です:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">app-layout</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">h1</span> <span class="attr">slot</span>=<span class="string">"header"</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">slot</span>=<span class="string">"footer"</span>&gt;</span>Here's some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">app-layout</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>描画された結果は以下になります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Here might be a page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>A paragraph for the main content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>And another one.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Here's some contact info<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>コンテンツ配信 API は、組み合わせて使うことを意図したコンポーネントを設計する際に、非常に便利なメカニズムです。</p>
+<h3 id="スコープ付きスロット"><a href="#スコープ付きスロット" class="headerlink" title="スコープ付きスロット"></a>スコープ付きスロット</h3><blockquote>
+<p>2.1.0 から新規</p>
+</blockquote>
+<p>スコープ付きスロット (scoped slot) は、既に描画された要素の代わりに再利用可能なテンプレート(データを渡すことができる)として機能する特殊なタイプのスロットです。</p>
+<p>子コンポーネントでは、コンポーネントにプロパティを渡すかのように、単純にデータをスロットに渡します:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">slot</span> <span class="attr">text</span>=<span class="string">"hello from child"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>親においては、特別な属性 <code>scope</code> を持つ <code>&lt;template&gt;</code> 要素が存在しなければならず、これはスコープ付きスロット用のテンプレートを示します。<code>scope</code> の値は、子から渡された props オブジェクトを保持する一時変数の名前です:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">child</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">scope</span>=<span class="string">"props"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>hello from parent<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; props.text &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上記のように描画すると、出力は次のようになります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>hello from parent<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>hello from child<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>スコープ付きスロットのより一般的なユースケースは、コンポーネント利用者がリスト内の各アイテムの描画方法をカスタマイズできるようにする、リストコンポーネントでしょう:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-awesome-list</span> <span class="attr">:items</span>=<span class="string">"items"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- scoped slot can be named too --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">"item"</span> <span class="attr">scope</span>=<span class="string">"props"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"my-fancy-item"</span>&gt;</span>&#123;&#123; props.text &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">my-awesome-list</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>リストコンポーネントのテンプレートでは次のようになります:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"item"</span></span></div><div class="line"><span class="tag">    <span class="attr">v-for</span>=<span class="string">"item in items"</span></span></div><div class="line"><span class="tag">    <span class="attr">:text</span>=<span class="string">"item.text"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- フォールバックコンテンツはここへ --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="動的コンポーネント"><a href="#動的コンポーネント" class="headerlink" title="動的コンポーネント"></a>動的コンポーネント</h2><p>予約された <code>&lt;component&gt;</code> 要素と、その <code>is</code> 属性に動的に束縛することで、同じマウントポイントで複数のコンポーネントを動的に切り替えることができます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example'</span>,</div><div class="line">  data: &#123;</div><div class="line">    currentView: <span class="string">'home'</span></div><div class="line">  &#125;,</div><div class="line">  components: &#123;</div><div class="line">    home: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">    posts: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">    archive: &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">component</span> <span class="attr">v-bind:is</span>=<span class="string">"currentView"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- vm.currentview が変更されると、中身が変更されます! --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">component</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>もしお好みならば、コンポーネントオブジェクトを直接束縛することもできます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> Home = &#123;</div><div class="line">  template: <span class="string">'&lt;p&gt;Welcome home!&lt;/p&gt;'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</div><div class="line">  el: <span class="string">'#example'</span>,</div><div class="line">  data: &#123;</div><div class="line">    currentView: Home</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="keep-alive"><a href="#keep-alive" class="headerlink" title="keep-alive"></a><code>keep-alive</code></h3><p>状態を保持したり再描画を避けたりするために、もし切り替えで取り除かれたコンポーネントを生きた状態で保持したい場合は、<code>&lt;keep-alive&gt;</code> 要素のなかで動的コンポーネントを抱合(wrap)することができます。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">"currentView"</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- 非活性になったコンポーネントをキャッシュします! --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">component</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>&lt;keep-alive&gt;</code> のさらなる詳細については、<a href="../api/#keep-alive">API リファレンス</a> を確認してください。</p>
+<h2 id="その他"><a href="#その他" class="headerlink" title="その他"></a>その他</h2><h3 id="再利用可能なコンポーネントの作成"><a href="#再利用可能なコンポーネントの作成" class="headerlink" title="再利用可能なコンポーネントの作成"></a>再利用可能なコンポーネントの作成</h3><p>コンポーネントを作成するとき、あとでこのコンポーネントをどこかほかの箇所で再利用するつもりかどうかを心に留めておくとよいでしょう。一度限りのコンポーネントが密に結びつくことは良いとしても、再利用可能なコンポーネントはきれいな公開インタフェースを定義し、どの中で使われるかに関してはなにも仮定しないようにするべきです。</p>
+<p>Vue コンポーネントのための API は、本質的に、プロパティ、イベント、スロットの3つの部分から成ります:</p>
+<ul>
+<li><p><strong>プロパティ</strong> 外部環境がコンポーネントにデータを渡すことを可能にします。</p>
+</li>
+<li><p><strong>イベント</strong> コンポーネントが外部環境の副作用をトリガーすることを可能にします。</p>
+</li>
+<li><p><strong>スロット</strong> 外部によって追加されるコンテンツとともにコンポーネントを構成することを可能にします。</p>
+</li>
+</ul>
+<p><code>v-bind</code> と <code>v-on</code> 用の省略記法を使うと、意図を明確かつ簡潔にテンプレート内で伝えることができます:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span></span></div><div class="line"><span class="tag">  <span class="attr">:foo</span>=<span class="string">"baz"</span></span></div><div class="line"><span class="tag">  <span class="attr">:bar</span>=<span class="string">"qux"</span></span></div><div class="line"><span class="tag">  @<span class="attr">event-a</span>=<span class="string">"doThis"</span></span></div><div class="line"><span class="tag">  @<span class="attr">event-b</span>=<span class="string">"doThat"</span></span></div><div class="line"><span class="tag">&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">slot</span>=<span class="string">"icon"</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">slot</span>=<span class="string">"main-text"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="子コンポーネントの参照"><a href="#子コンポーネントの参照" class="headerlink" title="子コンポーネントの参照"></a>子コンポーネントの参照</h3><p>プロパティやイベントの存在にもかかわらず、時には子コンポーネントに JavaScript で直接アクセスする必要があるかもしれません。それを実現するためには <code>ref</code> を用いて子コンポーネントに対して参照 ID を割り当てる必要があります。例えば:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">user-profile</span> <span class="attr">ref</span>=<span class="string">"profile"</span>&gt;</span><span class="tag">&lt;/<span class="name">user-profile</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> parent = <span class="keyword">new</span> Vue(&#123; <span class="attr">el</span>: <span class="string">'#parent'</span> &#125;)</div><div class="line"><span class="comment">// 子コンポーネントのインスタンスへのアクセス</span></div><div class="line"><span class="keyword">var</span> child = parent.$refs.profile</div></pre></td></tr></table></figure>
+<p><code>ref</code> が <code>v-for</code> と共に使用された時は、得られる値はデータソースをミラーリングした子コンポーネントが格納されている配列になります。</p>
+<p class="tip"><code>$refs</code> はコンポーネントが描画された後にのみ追加されます。そしてそれはリアクティブではありません。直接子コンポーネントを操作するための最終手段としての意味しかありません。テンプレートまたは算出プロパティの中での <code>$refs</code> の使用は避けるべきです。</p>
+
+<h3 id="非同期コンポーネント"><a href="#非同期コンポーネント" class="headerlink" title="非同期コンポーネント"></a>非同期コンポーネント</h3><p>大規模アプリケーションでは、アプリケーションを小さな塊に分割して、実際に必要になったときにサーバからコンポーネントをロードするだけにする必要があるかもしれません。それを簡単にするために、Vue.js ではコンポーネント定義を非同期的に解決するファクトリ関数としてコンポーネントを定義することができます。Vue はコンポーネントが実際に描画が必要になるとファクトリ関数のトリガだけ行い、将来の再描画のために結果をキャッシュします。例えば:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'async-example'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  <span class="comment">// コンポーネント定義を resolve コールバックで渡す</span></div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    resolve(&#123;</div><div class="line">      template: <span class="string">'&lt;div&gt;I am async!&lt;/div&gt;'</span></div><div class="line">    &#125;)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>ファクトリ関数は、サーバからコンポーネント定義を取得した後で呼ばれる <code>resolve</code> コールバックを引数に持ちます。ロードが失敗したことを示すために、<code>reject(reason)</code> を呼びだすこともできます。ここでの <code>setTimeout</code> は単にデモのためのものです。どうやってコンポーネントを取得するかは完全にあなた次第です。推奨されるアプローチの 1 つは <a href="https://webpack.js.org/guides/code-splitting/" target="_blank" rel="external">Webpack のコード分割機能</a>で非同期コンポーネントを使うことです。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'async-webpack-example'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</div><div class="line">  <span class="comment">// この特別な require 構文は webpack に対して</span></div><div class="line">  <span class="comment">// ビルドコードを自動的に分割し、</span></div><div class="line">  <span class="comment">// ajaxリクエストでロードされるバンドルに</span></div><div class="line">  <span class="comment">// するよう指示します</span></div><div class="line">  <span class="built_in">require</span>([<span class="string">'./my-async-component'</span>], resolve)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>ファクトリ関数は <code>Promise</code> を返すこともできます。Webpack 2 + ES2015 構文を使うと以下のようにできます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(</div><div class="line">  <span class="string">'async-webpack-example'</span>,</div><div class="line">  () =&gt; <span class="keyword">import</span>(<span class="string">'./my-async-component'</span>)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p><a href="components.html#ローカル登録">ローカル登録</a>を使用するとき、<code>Promise</code> を返す関数を直接提供することもできます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  components: &#123;</div><div class="line">    <span class="string">'my-component'</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'./my-async-component'</span>)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p class="tip">もしあなたが <strong>Browserify</strong> のユーザで非同期コンポーネントを使いたいとしたら、残念なことに開発者が<a href="https://github.com/substack/node-browserify/issues/58#issuecomment-21978224" target="_blank" rel="external">はっきりと</a>非同期読み込みは Browserify では今後もサポートしない”と述べています。少なくとも公式には。 Browserify コミュニティは、既存のアプリケーションや複雑なアプリケーションに役立つ<a href="https://github.com/vuejs/vuejs.org/issues/620" target="_blank" rel="external">いくつかの回避策</a>があります。他のすべてのシナリオでは、ファーストクラスとして非同期サポートを組み込みで提供する Webpack を使用することをお勧めします。</p>
+
+<h3 id="高度な非同期コンポーネント"><a href="#高度な非同期コンポーネント" class="headerlink" title="高度な非同期コンポーネント"></a>高度な非同期コンポーネント</h3><blockquote>
+<p>2.3.0 から新規</p>
+</blockquote>
+<p>2.3 から、非同期コンポーネントファクトリは、次の形式のオブジェクトも返すことができます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> AsyncComp = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</div><div class="line">  <span class="comment">// ロードするコンポーネント。Promise であるべき</span></div><div class="line">  component: <span class="keyword">import</span>(<span class="string">'./MyComp.vue'</span>),</div><div class="line">  <span class="comment">// 非同期コンポーネントのロード中に使用するコンポーネント</span></div><div class="line">  loading: LoadingComp,</div><div class="line">  <span class="comment">// ロードが失敗した場合に使用するコンポーネント</span></div><div class="line">  error: ErrorComp,</div><div class="line">  <span class="comment">// ローディングコンポーネントを表示する前に遅延する。デフォルト: 200 ms</span></div><div class="line">  delay: <span class="number">200</span>,</div><div class="line">  <span class="comment">// タイムアウトが設定され越えた場合、エラーコンポーネントが表示される。</span></div><div class="line">  <span class="comment">// デフォルト: Infinity</span></div><div class="line">  timeout: <span class="number">3000</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><code>vue-router</code> でルートコンポーネントとして使用された場合は、これらのプロパティは、ルートナビゲーションが起こる前に非同期コンポーネントが先に解決されるため、無視されます。ルートコンポーネントに対して上記の構文を使用したい場合は、<code>vue-router</code> 2.4.0 以降を使用する必要があります。</p>
+<h3 id="コンポーネントの命名の慣習"><a href="#コンポーネントの命名の慣習" class="headerlink" title="コンポーネントの命名の慣習"></a>コンポーネントの命名の慣習</h3><p>コンポーネント(またはプロパティ)を登録する時、ケバブケース、キャメルケース、パスカルケースを使うことができます。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//コンポーネント内での定義</span></div><div class="line">components: &#123;</div><div class="line">  <span class="comment">// ケバブケースを使った登録</span></div><div class="line">  <span class="string">'kebab-cased-component'</span>: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  <span class="comment">// キャメルケースを使った登録</span></div><div class="line">  <span class="string">'camelCasedComponent'</span>: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  <span class="comment">// パスカルケースを使った登録</span></div><div class="line">  <span class="string">'PascalCasedComponent'</span>: &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>しかし、HTML テンプレートの中では、ケバブケースを使用する必要があります。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- HTMLテンプレートの中では、常にケバブケースを使用する --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kebab-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">kebab-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">camel-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">camel-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pascal-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">pascal-cased-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>しかし <em>文字列</em> テンプレートを使用するときは、大文字と小文字を区別しない HTML の制約に縛られません。このことは、テンプレートの中でも、以下を使用してコンポーネントとプロパティを参照できるということを意味します:</p>
+<ul>
+<li>ケバブケース</li>
+<li>コンポーネントがキャメルケースを使用して定義されている場合はキャメルケースまたはケバブケース</li>
+<li>パスカルケースを使用して定義されている場合は、ケバブケース、キャメルケースまたはパスカルケース</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">components: &#123;</div><div class="line">  <span class="string">'kebab-cased-component'</span>: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  camelCasedComponent: &#123; <span class="comment">/* ... */</span> &#125;,</div><div class="line">  PascalCasedComponent: &#123; <span class="comment">/* ... */</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kebab-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">kebab-cased-component</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">camel-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">camel-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">camelCasedComponent</span>&gt;</span><span class="tag">&lt;/<span class="name">camelCasedComponent</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">pascal-cased-component</span>&gt;</span><span class="tag">&lt;/<span class="name">pascal-cased-component</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pascalCasedComponent</span>&gt;</span><span class="tag">&lt;/<span class="name">pascalCasedComponent</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">PascalCasedComponent</span>&gt;</span><span class="tag">&lt;/<span class="name">PascalCasedComponent</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>これは、パスカルケースが最も万能の<em>宣言規約</em>であり、ケバブケースが最も万能な<em>慣習規約</em>であることを意味します。</p>
+<p>もしコンポーネントが <code>slot</code> を介してコンテンツを伝えない場合は、名前のあとに <code>/</code> をつけることによって自己終了( self-closing )タグにすることもできます。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>自己終了カスタム要素は有効な HTML でなく、あなたのブラウザのネイティブパーサーはそれらを理解しないため、これは文字列テンプレートの中で<em>のみ</em>動作します。</p>
+<h3 id="再帰的なコンポーネント"><a href="#再帰的なコンポーネント" class="headerlink" title="再帰的なコンポーネント"></a>再帰的なコンポーネント</h3><p>コンポーネントはそのテンプレートで自分自身を再帰的に呼びだすことができます。ただし、それができるのは <code>name</code> オプションがあるときだけです:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">name: <span class="string">'unique-name-of-my-component'</span></div></pre></td></tr></table></figure>
+<p><code>Vue.component()</code> を使用してグローバルなコンポーネントを登録するとき、そのグローバル ID が自動的にコンポーネントの <code>name</code> オプションとして設定されます。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'unique-name-of-my-component'</span>, &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>注意しないと、再帰的なコンポーネントは無限ループにつながる可能性があります:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">name: <span class="string">'stack-overflow'</span>,</div><div class="line">template: <span class="string">'&lt;div&gt;&lt;stack-overflow&gt;&lt;/stack-overflow&gt;&lt;/div&gt;'</span></div></pre></td></tr></table></figure>
+<p>上記のようなコンポーネントは、”max stack size exceeded” エラーに想定されるため、再帰呼び出しは条件付きになるようにしてください。(i.e. 最終的に <code>false</code> となる <code>v-if</code> を使用します)</p>
+<h3 id="コンポーネント間の循環参照"><a href="#コンポーネント間の循環参照" class="headerlink" title="コンポーネント間の循環参照"></a>コンポーネント間の循環参照</h3><p>Finder  や File Explorer のようなファイルディレクトリツリーを構築しているとしましょう。以下のようなテンプレートを持つ <code>tree-folder</code> コンポーネントがあるかもしれません：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; folder.name &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tree-folder-contents</span> <span class="attr">:children</span>=<span class="string">"folder.children"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>次に、以下のようなテンプレートを持つ <code>tree-folder-contents</code> コンポーネントがあるとき:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"child in children"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tree-folder</span> <span class="attr">v-if</span>=<span class="string">"child.children"</span> <span class="attr">:folder</span>=<span class="string">"child"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">v-else</span>&gt;</span>&#123;&#123; child.name &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>よく見ると、これらのコンポーネントは実際にお互いの子孫となり、<em>かつ</em>レンダリングツリーの祖先ということがわかります。ああ、パラドックスですね！<code>Vue.component</code> でコンポーネントをグローバルに登録すると、このパラドックスは自動的に解決されます。あなたの問題がそれで解決されたなら、ここで読むことをやめることができます。</p>
+<p>しかしながら、<strong>モジュールシステム</strong> を使用してコンポーネントを読み込む場合、例えば、Webpack または Browserify 経由では以下のようなエラーになるでしょう:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Failed to mount component: template or render function not defined.</div></pre></td></tr></table></figure>
+<p>何が起こっているのかを説明するために、あるコンポーネント A とコンポーネント B があるとします。モジュールシステムには、A が必要ですが、最初の A は B を必要としますが、B は A を必要とし、A は B を必要とする場合は、最初に他のものを解決せずにいずれかのコンポーネントを完全に解決する方法を知らないためループになってしまいます。これを修正するには、モジュールシステムに “A は B が必要になるが、最終的には B を最初に解決する必要はない” と言うことができるポイントを与える必要があります。</p>
+<p>先程のケースでは、<code>tree-folder</code> コンポーネントをポイントにします。パラドックスを作成する子は、<code>tree-folder-contents</code> コンポーネントとなるため、<code>beforeCreate</code> ライフサイクルフックが登録されるまで待ちます:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">beforeCreate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.$options.components.TreeFolderContents = <span class="built_in">require</span>(<span class="string">'./tree-folder-contents.vue'</span>).default</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>これで問題を解決できます！</p>
+<h3 id="インラインテンプレート"><a href="#インラインテンプレート" class="headerlink" title="インラインテンプレート"></a>インラインテンプレート</h3><p>特別な属性 <code>inline-template</code> が子コンポーネントに存在するとき、配信コンテンツとして扱うよりむしろ、コンポーネントはそれをテンプレートとして内部コンテンツを使用します。これは、より柔軟なテンプレートを作成可能にします。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">inline-template</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>These are compiled as the component's own template.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Not parent's transclusion content.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>しかしながら、<code>inline-template</code> はテンプレートのスコープを推理するのが難しくなります。ベストプラクティスとして、<code>template</code> オプションを使用して、コンポーネント内部でテンプレートを定義するようにするか、<code>.vue</code> ファイルの <code>template</code> 要素の中で定義します。</p>
+<h3 id="x-template"><a href="#x-template" class="headerlink" title="x-template"></a>x-template</h3><p>テンプレートを定義するもうひとつの方法は、<code>text/x-template</code> タイプとともに script 要素の中で定義するというものです。そのあと、id によってテンプレートを参照します。例:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/x-template"</span> <span class="attr">id</span>=<span class="string">"hello-world-template"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello hello hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'hello-world'</span>, &#123;</div><div class="line">  template: <span class="string">'#hello-world-template'</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>これらは大きなテンプレートを使ったデモまたは、極めて小さなアプリケーションに便利です。しかし、それ以外では避けるべきです。なぜなら、コンポーネントの定義の残りからテンプレートを分離するからです。</p>
+<h3 id="v-once-を使用した安価な静的コンポーネント"><a href="#v-once-を使用した安価な静的コンポーネント" class="headerlink" title="v-once を使用した安価な静的コンポーネント"></a><code>v-once</code> を使用した安価な静的コンポーネント</h3><p>Vue では、素の HTML 要素を描画するのはとても高速です。しかし、時どき、静的なコンテンツを <strong>大量に</strong> 含むコンポーネントがあるかもしれません。このような場合、以下のように root 要素で <code>v-once</code> ディレクティブを追加することによって、コンポーネントを一度のみ評価しキャッシュしておくことを保証することができます。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">Vue.component(<span class="string">'terms-of-service'</span>, &#123;</div><div class="line">  template: <span class="string">'\</span></div><div class="line"><span class="string">    &lt;div v-once&gt;\</span></div><div class="line"><span class="string">      &lt;h1&gt;Terms of Service&lt;/h1&gt;\</span></div><div class="line"><span class="string">      ... a lot of static content ...\</span></div><div class="line"><span class="string">    &lt;/div&gt;\</span></div><div class="line"><span class="string">  '</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+
+  
+    <div class="guide-links">
+      
+        <span>← <a href="/v2/guide/forms.html">フォーム入力バインディング</a></span>
+      
+      
+    </div>
+  
+  <div class="footer">
+    <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div class="bsa-cpc"></div>
+<script>
+  (function(){
+    if(typeof _bsa !== 'undefined' && _bsa) {
+    _bsa.init('default', 'CKYD62QM', 'placement:vuejsorg', {
+      target: '.bsa-cpc',
+      align: 'horizontal',
+      disable_css: 'true'
+    });
+      }
+  })();
+</script>
+
+    間違いを見つけた、またはドキュメントに貢献したいですか？
+    <a href="https://github.com/vuejs/jp.vuejs.org/blob/lang-ja/src/v2/guide/components.md" target="_blank">Github 上でこのページを編集する</a> か、<a href="https://github.com/vuejs/jp.vuejs.org" target="_blank">Github からこのサイトを Fork してプルリクエストしましょう
+    </a>！
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/search.css">
+    <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      // search index defaults to v2
+      var match = window.location.pathname.match(/^\/(v\d+)/)
+      var version = match ? match[1] : 'v2'
+      docsearch({
+      appId: 'BH4D9OD16A',
+      apiKey: '0a75952972806d9ad07e387d08e9cc4c',
+      indexName: 'vuejs_jp',
+      inputSelector: selector,
+      algoliaOptions: { facetFilters: ["version:" + version] }
+      })
+    })
+    </script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>
